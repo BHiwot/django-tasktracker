@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Tsk model for assigning tasks to users
 class Task(models.Model):
     STATUS_CHOICES =[
-        ('PENDING', 'pENDING'),
+        ('PENDING', 'Pending'),
         ('IN_PROGRESS', 'In Progress'),
         ('COOMPLETED', 'Completed'),
     ]

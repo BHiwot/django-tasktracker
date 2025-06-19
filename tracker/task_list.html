@@ -1,0 +1,15 @@
+<h2>My Tasks</h2>
+
+<p>Welcome, {{ request.user.username}} | <a href="{% url 'logout' %}">Logout</a></p>
+
+<ul>
+    {% for task in tasks %}
+    <li>
+        <strong>{{ task.title }}</strong><br>
+        {{task.description}}<br>
+        Status: <span>{{ task.status }}</span><br><br>
+    </li>
+    {% empty %}
+        <p> No tasks assigned yet.</p>
+        {% endfor %}
+</ul>
