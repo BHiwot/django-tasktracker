@@ -1,0 +1,13 @@
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 8495
+"GET /admin/auth/user/add/ HTTP/1.1" 200 12866
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 8495
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 8495
+"GET /admin/tracker/task/ HTTP/1.1" 200 9797
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/tracker/task/3/change/ HTTP/1.1" 200 13351
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/tracker/task/ HTTP/1.1" 200 9797
+"GET /admin/ HTTP/1.1" 200 8495

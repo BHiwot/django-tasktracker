@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('tracker.urls')),   #Include tracker URLs
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'), # Login route
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'), #Logout route
+    path('api/', include('tracker.api_urls')),
 ]
