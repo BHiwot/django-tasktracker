@@ -20,12 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s!ctx$y41a+u&ua*b4i7t16@=d7w#cu&44l$pl98!7yuc36og4'
+#SECRET_KEY = 'django-insecure-s!ctx$y41a+u&ua*b4i7t16@=d7w#cu&44l$pl98!7yuc36og4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+from decouple import config
+
+DEBUG = config('DEBUG', default=True, cast=bool)
+SECRET_KEY = config('SECRET_KEY')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 
 
 # Application definition
@@ -146,5 +151,11 @@ LOGGING = {
         },
     },
 }
+import os
 
-    
+# Allow all hosts for now (for demo)
+ALLOWED_HOSTS = ['*']
+
+# Static files settings
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+   
