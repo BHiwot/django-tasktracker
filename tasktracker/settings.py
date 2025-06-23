@@ -12,7 +12,9 @@ SECRET_KEY = config('SECRET_KEY', default='insecure-dev-secret')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Hosts allowed to serve this project
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv)
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
