@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='insecure-dev-secret')
 
 # SECURITY WARNING: don't run with debug enabled in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 # Hosts allowed to serve this project
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv)
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'tasktracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'tracker/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,8 +81,14 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files settings for Render
+# STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -106,3 +112,6 @@ LOGGING = {
         },
     },
 }
+
+
+LOGIN_REDIRECT_URL = '/tasks/'
