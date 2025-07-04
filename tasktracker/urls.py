@@ -27,15 +27,32 @@
 # ]
 
 
+# from django.contrib import admin
+# from django.urls import path
+# from tracker import views as tracker_views
+# from django.contrib.auth import views as auth_views
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', tracker_views.home_view, name='home'),
+#     path('tasks/', tracker_views.task_list, name='task_list'),
+#     path('login/', auth_views.LoginView.as_view(template_name='tracker/login.html'), name='login'),
+#     path('logout/', auth_views.LoginView.as_view(template_name='tracker/login.html'), name='logout'),
+# ]
+
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from tracker import views as tracker_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tracker_views.home_view, name='home'),
-    path('tasks/', tracker_views.task_list, name='task_list'),
-    path('login/', auth_views.LoginView.as_view(template_name='tracker/login.html'), name='login'),
-    path('logout/', auth_views.LoginView.as_view(template_name='tracker/login.html'), name='logout'),
+    path('dashboard/', tracker_views.user_dashboard, name='dashboard'),
+    # path('complete-task/<int:task_id>/', tracker_views.complete_task, name='complete-task'),
+  path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+    path('api/', include('tracker.api_urls')),
+    path('tasks/', tracker_views.task_list, name='task-list'),
 ]

@@ -122,11 +122,11 @@ A ready-made Postman collection is available to test all API endpoints.
 
 ---
 
-## 📌 Coming in Day 3
+## 📌 Deployment
 
 - ✅ Token-based auth using JWT
 - 🐳 Docker + Docker Compose
-- 🌍 Deployment to cloud (Render/Heroku)
+- 🌍 Deployment to cloud (Render)
 
 ---
 

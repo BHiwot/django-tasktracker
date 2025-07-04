@@ -11,5 +11,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the project
 COPY . .
 
+
+# Collect static files and migrate the database
+RUN python manage.py collectstatic --noinput
+RUN python manage.py migrate
+
 # Run the Django server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
