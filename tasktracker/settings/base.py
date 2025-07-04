@@ -2,21 +2,17 @@ from pathlib import Path
 from decouple import config, Csv
 import os
 
-# Base directory
-BASE_DIR = Path(__file__).resolve().parent.parent
+# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-# SECURITY WARNING: keep the secret key secret!
+# 📁 Base directory
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+# 🔐 Secret key and debug config
 SECRET_KEY = config('SECRET_KEY', default='insecure-dev-secret')
-
-# SECURITY WARNING: don't run with debug enabled in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
-# Hosts allowed to serve this project
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv)
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
-# Application definition
+# ✅ Installed apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+# ✅ Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -39,12 +36,14 @@ MIDDLEWARE = [
     'tracker.middleware.RequestLogMiddleware',
 ]
 
+# ✅ URL configuration
 ROOT_URLCONF = 'tasktracker.urls'
 
+# ✅ Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'tracker' / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,9 +55,10 @@ TEMPLATES = [
     },
 ]
 
+# ✅ WSGI application
 WSGI_APPLICATION = 'tasktracker.wsgi.application'
 
-# Database
+# ✅ Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -66,7 +66,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# ✅ Password validators
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -74,20 +74,23 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Localization
+# ✅ Localization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files settings for Render
+# ✅ Static files (works for local dev)
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Default primary key field type
+# 👇 Used only in production, e.g., prod.py
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# ✅ Primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Logging to file
+# ✅ Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -106,3 +109,6 @@ LOGGING = {
         },
     },
 }
+
+# ✅ Redirect to task list after login
+LOGIN_REDIRECT_URL = '/dashboard/'
