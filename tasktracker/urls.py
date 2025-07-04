@@ -49,7 +49,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tracker_views.home_view, name='home'),
-    path('dashboard/', tracker_views.user_dashboard, name='dashboard'),
+    path('dashboard/', tracker_views.user_dashboard, name='user-dashboard'),
     # path('complete-task/<int:task_id>/', tracker_views.complete_task, name='complete-task'),
   path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),

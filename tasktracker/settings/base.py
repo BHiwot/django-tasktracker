@@ -34,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'tracker.middleware.RequestLogMiddleware',
+    
 ]
 
 # ✅ URL configuration
