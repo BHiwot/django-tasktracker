@@ -4,15 +4,15 @@ import os
 
 # <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-# 📁 Base directory
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# 🔐 Secret key and debug config
+#  Secret key and debug config
 SECRET_KEY = config('SECRET_KEY', default='insecure-dev-secret')
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
-# ✅ Installed apps
+#  Installed apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-# ✅ Middleware
+#  Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,7 +85,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # 👇 Used only in production, e.g., prod.py
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ✅ Primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
