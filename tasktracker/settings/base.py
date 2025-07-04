@@ -113,3 +113,5 @@ LOGGING = {
 
 # ✅ Redirect to task list after login
 LOGIN_REDIRECT_URL = '/dashboard/'
+
+LOGIN_URL = '/login/'
